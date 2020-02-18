@@ -1,7 +1,7 @@
 {
-  "name": "eth-marketplace",
+  "name": "eth-social-network",
   "version": "0.1.0",
-  "description": "An Ethereum Marketplace",
+  "description": "Social Network",
   "author": "gregory@dappuniversity.com",
   "dependencies": {
     "babel-polyfill": "6.26.0",
