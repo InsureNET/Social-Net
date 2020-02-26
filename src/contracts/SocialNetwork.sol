@@ -2,46 +2,50 @@ pragma solidity ^0.5.0;
 
 contract SocialNetwork {
     string public name;
-    uint public postCount = 0;
-    mapping(uint => Post) public posts;
+    uint256 public postCount = 0;
+    mapping(uint256 => Post) public posts;
 
     struct Post {
-        uint id;
+        uint256 id;
         string content;
-        uint tipAmount;
+        uint256 tipAmount;
+        uint256 boostAmount;
         address payable author;
     }
 
     event PostCreated(
-        uint id,
+        uint256 id,
         string content,
-        uint tipAmount,
+        uint256 tipAmount,
+        uint256 boostAmount,
         address payable author
     );
 
     event PostTipped(
-        uint id,
+        uint256 id,
         string content,
-        uint tipAmount,
+        uint256 tipAmount,
         address payable author
     );
 
+    event PostBoosted(uint256 id, address payable author, uint256 boostAmount);
+
     constructor() public {
-        name = "Dapp University Social Network";
+        name = "InsureNET Social Network";
     }
 
     function createPost(string memory _content) public {
         // Require valid content
         require(bytes(_content).length > 0);
         // Increment the post count
-        postCount ++;
+        postCount++;
         // Create the post
-        posts[postCount] = Post(postCount, _content, 0, msg.sender);
+        posts[postCount] = Post(postCount, _content, 0, 0, msg.sender);
         // Trigger event
-        emit PostCreated(postCount, _content, 0, msg.sender);
+        emit PostCreated(postCount, _content, 0, 0, msg.sender);
     }
 
-    function tipPost(uint _id) public payable {
+    function tipPost(uint256 _id) public payable {
         // Make sure the id is valid
         require(_id > 0 && _id <= postCount);
         // Fetch the post
@@ -57,4 +61,23 @@ contract SocialNetwork {
         // Trigger an event
         emit PostTipped(postCount, _post.content, _post.tipAmount, _author);
     }
+
+    function boostPost(uint256 _id) public payable {
+        // check the id
+        require(_id > 0 && _id <= postCount);
+        // Fetch the post
+        Post memory _post = posts[_id];
+        // Add the boosted amount to the post, not the author.
+        // the author will get a portion of this.
+        address payable _author = _post.author;
+        // todo: pay the post and subtract fees
+        // todo: address(_author).transfer(msg.value);
+        // Increment the boost amount
+        _post.boostAmount = _post.boostAmount + msg.value;
+        // Update the post
+        posts[_id] = _post;
+        // Trigger event
+        emit PostBoosted(_id, msg.sender, msg.value);
+    }
+
 }
