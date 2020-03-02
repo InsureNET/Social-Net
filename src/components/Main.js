@@ -10,11 +10,11 @@ class Main extends Component {
           <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '500px' }}>
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
-                <form onSubmit={(event) => {
-                  event.preventDefault()
-                  const content = this.postContent.value
-                  this.props.createPost(content)
-                }}>
+              <form onSubmit={(event) => {
+                event.preventDefault()
+                const content = this.postContent.value
+                this.props.createPost(content)
+              }}>
                 <div className="form-group mr-sm-2">
                   <input
                     id="postContent"
@@ -27,15 +27,16 @@ class Main extends Component {
                 <button type="submit" className="btn btn-primary btn-block">Share</button>
               </form>
               <p>&nbsp;</p>
-              { this.props.posts.map((post, key) => {
-                return(
+              {this.props.posts.map((post, key) => {
+                return (
                   <div className="card mb-4" key={key} >
                     <div className="card-header">
                       <img
                         className='mr-2'
                         width='30'
                         height='30'
-                        src={`data:image/png;base64,${new Identicon(post.author, 30).toString()}`}
+                        src={`data:image/png;base64,${ new Identicon(post.author, 30).toString() }`}
+                        alt='Avatar'
                       />
                       <small className="text-muted">{post.author}</small>
                     </div>
@@ -47,16 +48,17 @@ class Main extends Component {
                         <small className="float-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                         </small>
+
                         <button
                           className="btn btn-link btn-sm float-right pt-0"
                           name={post.id}
                           onClick={(event) => {
-                            let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                            let tipAmount = window.web3.utils.toWei('0.001', 'Ether')
                             console.log(event.target.name, tipAmount)
                             this.props.tipPost(event.target.name, tipAmount)
                           }}
                         >
-                          TIP 0.1 ETH
+                          TIP 0.001 ETH
                         </button>
                       </li>
                     </ul>
