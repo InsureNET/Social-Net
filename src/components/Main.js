@@ -1,13 +1,12 @@
 import React, { Component, useState } from 'react';
 import Identicon from 'identicon.js';
 
-import Pagination from './Pagination';
-import FetchData from '../services/FetchData'
+//import Pagination from './Pagination';
 
 
 class Main extends Component {
-
   render() {
+
     return (
       <div className="container-fluid mt-5">
         <div className="row">
@@ -89,5 +88,8 @@ class Main extends Component {
     );
   }
 }
+
+
+
 
 export default Main;

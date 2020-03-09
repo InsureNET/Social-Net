@@ -9,9 +9,11 @@ function FetchData(url, timeout) {
 
     // Initialize
     function init() {
+        console.group('Initializing')
         setData([]);
         setLoading(true);
         setLoading(false);
+        console.groupEnd();
     }
 
     // Load
@@ -20,6 +22,7 @@ function FetchData(url, timeout) {
         setLoading(true);
         try {
             const result = await axios.fetch(url, { timeout: timeout }).data;
+            setData(result);
         } catch (error) {
             setError(error);
         }
