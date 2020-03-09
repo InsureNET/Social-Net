@@ -9,11 +9,22 @@ import Main from './Main'
 class App extends Component {
 
   async componentWillMount() {
+    console.group('App Component')
     await this.loadWeb3()
     await this.loadBlockchainData()
+
+
+    console.groupEnd()
+  }
+
+  async componentDidMount() {
+
+    await console.log('App Component Mounted')
+
   }
 
   async loadWeb3() {
+    console.group('Load Web3')
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
       await window.ethereum.enable()
@@ -24,13 +35,17 @@ class App extends Component {
     else {
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
     }
+    console.groupEnd();
   }
 
   async loadBlockchainData() {
+    console.group('Loading blockchain data')
     const web3 = window.web3
     // Load account
+    console.info('loading accounts from wallet')
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
+    console.info('accounts loaded, using account ', accounts[0])
     // Network ID
     const networkId = await web3.eth.net.getId()
     const networkData = SocialNetwork.networks[networkId]
@@ -54,6 +69,9 @@ class App extends Component {
     } else {
       window.alert('SocialNetwork contract not deployed to detected network.')
     }
+
+    console.groupEnd();
+
   }
 
   createPost(content) {

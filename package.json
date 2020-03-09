@@ -2,7 +2,10 @@
   "name": "eth-social-network",
   "version": "0.1.0",
   "description": "Social Network",
-  "author": "gregory@dappuniversity.com",
+  "author": {
+    "email": "jaxcoder@outlook.com",
+    "name": "Jason Romero"
+  },
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
@@ -37,5 +40,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "axios": "^0.19.2"
+  }
 }

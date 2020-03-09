@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Identicon from 'identicon.js';
+
+import Pagination from './Pagination';
+import FetchData from '../services/FetchData'
+
 
 class Main extends Component {
 
@@ -27,6 +31,7 @@ class Main extends Component {
                 <button type="submit" className="btn btn-primary btn-block">Share</button>
               </form>
               <p>&nbsp;</p>
+              {/*Map each post*/}
               {this.props.posts.map((post, key) => {
                 return (
                   <div className="card mb-4" key={key} >
@@ -48,7 +53,19 @@ class Main extends Component {
                         <small className="float-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                         </small>
-
+                        {/* Boost Post */}
+                        <button
+                          className="btn btn-link btn-sm float-right pt-0"
+                          name={post.id}
+                          onClick={(event) => {
+                            let boostAmount = window.web3.utils.toWei('0.001', 'Ether')
+                            console.log(event.target.name, boostAmount)
+                            this.props.boostPost(event.target.name, boostAmount)
+                          }}
+                        >
+                          BOOST 0.001 ETH
+                        </button>
+                        {/* Tip the Author */}
                         <button
                           className="btn btn-link btn-sm float-right pt-0"
                           name={post.id}
@@ -59,7 +76,7 @@ class Main extends Component {
                           }}
                         >
                           TIP 0.001 ETH
-                        </button>
+                          </button>
                       </li>
                     </ul>
                   </div>
@@ -68,7 +85,7 @@ class Main extends Component {
             </div>
           </main>
         </div>
-      </div>
+      </div >
     );
   }
 }
