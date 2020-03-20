@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 
 class Main extends Component {
-
+  constructor(props){
+    super(props)
+    this.state = {
+      test: this.props,
+    }
+  }
   render() {
     return (
       <div className="container-fluid mt-5">
@@ -24,7 +29,18 @@ class Main extends Component {
                     placeholder="What's on your mind?"
                     required />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">Share</button>
+                {/* <button
+                    className="btn btn-link btn-sm float-right pt-0"
+                    name={this.props.account}
+                    onClick={(event) => {
+                      let boostAmount = window.web3.utils.toWei('0.001', 'Ether')
+                      console.log(event.target.name, boostAmount)
+                      this.props.boostPost(event.target.name, boostAmount)
+                    }}
+                  >
+                    Boost 0.001 ETH
+                  </button> */}
+                <button type="submit" className="btn btn-primary btn-block">Create Post</button>
               </form>
               <p>&nbsp;</p>
               {this.props.posts.map((post, key) => {

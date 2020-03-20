@@ -86,13 +86,16 @@ class App extends Component {
     this.state = {
       account: '',
       socialNetwork: null,
+      marketplace: null,
       postCount: 0,
       posts: [],
+      metadata: {},
       loading: true
     }
 
     this.createPost = this.createPost.bind(this)
     this.tipPost = this.tipPost.bind(this)
+    this.boostPost = this.boostPost.bind(this)
   }
 
   render() {
@@ -105,6 +108,7 @@ class App extends Component {
             posts={this.state.posts}
             createPost={this.createPost}
             tipPost={this.tipPost}
+            boostPost={this.boostPost}
           />
         }
       </div>
