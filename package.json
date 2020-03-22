@@ -39,6 +39,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@truffle/hdwallet-provider": "^1.0.31"
+    "@truffle/hdwallet-provider": "^1.0.31",
+    "react-router": "^5.1.2"
   }
 }

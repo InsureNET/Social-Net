@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 
+// todo: add react-router and impliment
+// import { Router } from 'react-router';
+
+/* Navbar Component */
 class Navbar extends Component {
 
   render() {
