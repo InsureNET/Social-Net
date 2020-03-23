@@ -14,6 +14,7 @@ class Main extends Component {
                 event.preventDefault()
                 const content = this.postContent.value
                 this.props.createPost(content)
+                
               }}>
                 <div className="form-group mr-sm-2">
                   <input
