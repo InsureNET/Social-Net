@@ -61,6 +61,28 @@ class Main extends Component {
                         >
                           TIP 0.001 ETH
                         </button>
+                        <button
+                          className="btn btn-link btn-sm float-right pt-0"
+                          name={post.id}
+                          onClick={(event) => {
+                            let tipAmount = window.web3.utils.toWei('0.01', 'Ether')
+                            console.log(event.target.name, tipAmount)
+                            this.props.tipPost(event.target.name, tipAmount)
+                          }}
+                        >
+                          TIP 0.01 ETH
+                        </button>
+                        <button
+                          className="btn btn-link btn-sm float-right pt-0"
+                          name={post.id}
+                          onClick={(event) => {
+                            let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                            console.log(event.target.name, tipAmount)
+                            this.props.tipPost(event.target.name, tipAmount)
+                          }}
+                        >
+                          TIP 0.1 ETH
+                        </button>
                       </li>
                     </ul>
                   </div>

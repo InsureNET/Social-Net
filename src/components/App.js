@@ -102,9 +102,9 @@ class App extends Component {
         {this.state.loading
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
-            posts={this.state.posts}
-            createPost={this.createPost}
-            tipPost={this.tipPost}
+              posts={this.state.posts}
+              createPost={this.createPost}
+              tipPost={this.tipPost}
           />
         }
       </div>

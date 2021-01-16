@@ -28,10 +28,14 @@ contract SocialNetwork {
         address payable author
     );
 
-    event PostBoosted(uint256 id, address payable author, uint256 boostAmount);
+    event PostBoosted(
+        uint256 id, 
+        address payable author, 
+        uint256 boostAmount
+    );
 
     constructor() public {
-        name = "InsureNET Social Network";
+        name = " adTrumpet";
     }
 
     function createPost(string memory _content) public {

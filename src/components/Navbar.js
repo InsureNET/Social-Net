@@ -15,9 +15,9 @@ class Navbar extends Component {
           href="/"
           rel="noopener noreferrer"
         >
-          InsureNET Social Network
+          AdTrumpet
         </a>
-        <a
+        {/* <a
           className="navbar"
           href="https://insurenet-ico-site.netlify.com"
           target="_blank"
@@ -32,14 +32,14 @@ class Navbar extends Component {
           rel="noopener noreferrer"
         >
           Whitepaper
-        </a>
+        </a> 
         <a
           className="navbar"
           href="/team"
           rel="noopener noreferrer"
         >
           Team
-        </a>
+        </a>*/}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
             <small className="text-secondary">
